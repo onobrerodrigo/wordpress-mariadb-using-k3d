@@ -15,7 +15,7 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-service
+  name: wordpress
   namespace: site
 spec:
   selector:
@@ -31,7 +31,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: wordpress
   namespace: site
 spec:
   replicas: 1
@@ -59,14 +59,14 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wordpress-ingress
+  name: wordpress
   namespace: site
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: onobrerodrigo.tech
+  - host: wp.onobrerodrigo.tech
     http:
       paths:
       - pathType: Prefix
@@ -78,8 +78,8 @@ spec:
               number: 80
   tls:
     - hosts:
-      - onobrerodrigo.tech
-      secretName: onobrerodrigo-tech
+      - wp.onobrerodrigo.tech
+      secretName: wp-onobrerodrigo-tech
 status:
   loadBalancer:
     ingress:
