@@ -82,6 +82,5 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - hostname: 172.30.0.10
-      ip: 172.30.0.10
+    - ip: 172.30.0.10
 ---
